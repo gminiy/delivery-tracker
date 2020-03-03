@@ -35,6 +35,8 @@ function referer(state = initialState, action) {
       };
     case INITIALIZE_INPUTS:
       return initialState;
+    default:
+      return state;
   }
 }
 
