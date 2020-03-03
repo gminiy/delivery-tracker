@@ -1,11 +1,11 @@
 import React from 'react';
 import DeliveryTrackerTemplate from './components/DeliveryTrackerTemplate';
-import DeliveryTrackerInputTemplate from './components/DeliveryTrackerInputTemplate';
+import DeliveryTrackerRefererTemplate from './components/DeliveryTrackerRefererTemplate';
 
 const App = () => {
   return (
   <DeliveryTrackerTemplate>
-    <DeliveryTrackerInputTemplate />
+    <DeliveryTrackerRefererTemplate />
   </DeliveryTrackerTemplate>
   );
 };
