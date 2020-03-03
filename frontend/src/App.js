@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import DeliveryTrackerTemplate from './components/DeliveryTrackerTemplate';
 
 const App = () => {
-  return <h1>Project Init</h1>;
+  return <DeliveryTrackerTemplate />;
 };
 
 export default App;
