@@ -1,12 +1,12 @@
 import React from 'react';
-import DeliveryTrackerTemplate from './components/DeliveryTrackerTemplate';
-import DeliveryTrackerRefererTemplate from './components/DeliveryTrackerRefererTemplate';
+import DeliveryTracker from './components/DeliveryTracker';
+import DeliveryTrackerReferer from './components/DeliveryTrackerReferer';
 
 const App = () => {
   return (
-  <DeliveryTrackerTemplate>
-    <DeliveryTrackerRefererTemplate />
-  </DeliveryTrackerTemplate>
+  <DeliveryTracker>
+    <DeliveryTrackerReferer />
+  </DeliveryTracker>
   );
 };
 
