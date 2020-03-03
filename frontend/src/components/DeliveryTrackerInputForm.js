@@ -23,11 +23,11 @@ const StyledInput = styled.input`
   width: 20rem;
 `;
 
-const DeliveryTrackerInput = ({ label, name }) => {
+const DeliveryTrackerInput = ({ label, name, onChange }) => {
   return (
     <DeliveryTrackerInputFormBlock>
       <div className="inputLabel">{label}</div>
-      <StyledInput name={name} placeholder={label} />
+      <StyledInput name={name} placeholder={label} onChange={onChange} />
     </DeliveryTrackerInputFormBlock>
   );
 };
