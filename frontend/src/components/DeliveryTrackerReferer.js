@@ -14,6 +14,7 @@ const DeliveryTrackerReferer = ({
   changeDeliverCompany,
   changeInvoiceNumber,
   initializeInputs,
+  refer
 }) => {
   const onChangeDeliverCompany = e => changeDeliverCompany(e.target.value);
   const onChangeinvoiceNumber = e => changeInvoiceNumber(e.target.value);
@@ -33,7 +34,7 @@ const DeliveryTrackerReferer = ({
         value={invoiceNumber}
         onChange={onChangeinvoiceNumber}
       />
-      <DeliveryTrackerButtonWithMargin>
+      <DeliveryTrackerButtonWithMargin onClick={refer}>
         조회하기
       </DeliveryTrackerButtonWithMargin>
       <DeliveryTrackerButtonWithMargin onClick={initializeInputs}>

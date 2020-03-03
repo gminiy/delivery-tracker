@@ -14,6 +14,11 @@ const DeliveryTrackerRefererContainer = ({
   changeInvoiceNumber,
   initializeInputs,
 }) => {
+  const refer = () => {
+    console.log(deliverCompany);
+    console.log(invoiceNumber);
+  };
+
   return (
     <DeliveryTrackerReferer
       deliverCompany={deliverCompany}
@@ -21,6 +26,7 @@ const DeliveryTrackerRefererContainer = ({
       changeDeliverCompany={changeDeliverCompany}
       changeInvoiceNumber={changeInvoiceNumber}
       initializeInputs={initializeInputs}
+      refer={refer}
     />
   );
 };
