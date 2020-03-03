@@ -1,12 +1,26 @@
 import React from 'react';
-import './DeliveryTrackerTemplate.scss';
+import styled from 'styled-components';
+
+const DeliveryTrackerTemplateBlock = styled.div`
+  width: 100%;
+  overflow: hidden;
+  
+  .appTitle {
+    color: 'black';
+    height: 4rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
 
 const DeliveryTrackerTemplate = ({ children }) => {
   return (
-    <div className="DeliveryTrackerTemplate">
-      <div className="title">월간 가슴 배송 조회</div>
+    <DeliveryTrackerTemplateBlock>
+      <div className="appTitle">월간 가슴 배송 조회</div>
       <div className="content">{children}</div>
-    </div>
+    </DeliveryTrackerTemplateBlock>
   );
 };
 
