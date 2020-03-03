@@ -9,15 +9,15 @@ const DeliveryTrackerButtonWithMargin = styled(DeliveryTrackerButton)`
   margin-top: 2.5%;
 `;
 const DeliveryTrackerReferer = ({
-  deliverCompany,
+  deliveryCompany,
   invoiceNumber,
-  changeDeliverCompany,
+  changeDeliveryCompany,
   changeInvoiceNumber,
   initializeInputs,
   refer
 }) => {
-  const onChangeDeliverCompany = e => changeDeliverCompany(e.target.value);
-  const onChangeinvoiceNumber = e => changeInvoiceNumber(e.target.value);
+  const onChangeDeliveryCompany = e => changeDeliveryCompany(e.target.value);
+  const onChangeInvoiceNumber = e => changeInvoiceNumber(e.target.value);
 
   return (
     <div>
@@ -25,14 +25,14 @@ const DeliveryTrackerReferer = ({
       <DeliveryTrackerInputForm
         name="deliveryCompany"
         label="택배 회사"
-        value={deliverCompany}
-        onChange={onChangeDeliverCompany}
+        value={deliveryCompany}
+        onChange={onChangeDeliveryCompany}
       />
       <DeliveryTrackerInputForm
         name="invoiceNumber"
         label="송장 번호"
         value={invoiceNumber}
-        onChange={onChangeinvoiceNumber}
+        onChange={onChangeInvoiceNumber}
       />
       <DeliveryTrackerButtonWithMargin onClick={refer}>
         조회하기

@@ -2,28 +2,28 @@ import React from 'react';
 import { connect } from 'react-redux';
 import DeliveryTrackerReferer from '../components/DeliveryTrackerReferer';
 import {
-  changeDeliverCompany,
+  changeDeliveryCompany,
   changeInvoiceNumber,
   initializeInputs,
 } from '../modules/referer';
 
 const DeliveryTrackerRefererContainer = ({
-  deliverCompany,
+  deliveryCompany,
   invoiceNumber,
-  changeDeliverCompany,
+  changeDeliveryCompany,
   changeInvoiceNumber,
   initializeInputs,
 }) => {
   const refer = () => {
-    console.log(deliverCompany);
+    console.log(deliveryCompany);
     console.log(invoiceNumber);
   };
 
   return (
     <DeliveryTrackerReferer
-      deliverCompany={deliverCompany}
+      deliveryCompany={deliveryCompany}
       invoiceNumber={invoiceNumber}
-      changeDeliverCompany={changeDeliverCompany}
+      changeDeliveryCompany={changeDeliveryCompany}
       changeInvoiceNumber={changeInvoiceNumber}
       initializeInputs={initializeInputs}
       refer={refer}
@@ -32,13 +32,13 @@ const DeliveryTrackerRefererContainer = ({
 };
 
 const mapStateToProps = state => ({
-  deliverCompany: state.referer.deliverCompany,
+  deliveryCompany: state.referer.deliveryCompany,
   invoiceNumber: state.referer.invoiceNumber,
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeDeliverCompany: deliverCompany => {
-    dispatch(changeDeliverCompany(deliverCompany));
+  changeDeliveryCompany: deliveryCompany => {
+    dispatch(changeDeliveryCompany(deliveryCompany));
   },
   changeInvoiceNumber: invoiceNumber => {
     dispatch(changeInvoiceNumber(invoiceNumber));

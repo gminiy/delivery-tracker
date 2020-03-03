@@ -1,12 +1,12 @@
 import { createAction, handleActions } from 'redux-actions';
 
-const CHANGE_DELIVER_COMPANY = 'referer/CHANGE_DELIVER_COMPANY';
+const CHANGE_DELIVERY_COMPANY = 'referer/CHANGE_DELIVERY_COMPANY';
 const CHANGE_INVOICE_NUMBER = 'referer/CHANGE_INVOICE_NUMBER';
 const INITIALIZE_INPUTS = 'referer/INITIALIZE_INPUTS';
 
-export const changeDeliverCompany = createAction(
-  CHANGE_DELIVER_COMPANY,
-  deliverCompany => deliverCompany,
+export const changeDeliveryCompany = createAction(
+  CHANGE_DELIVERY_COMPANY,
+  deliveryCompany => deliveryCompany,
 );
 export const changeInvoiceNumber = createAction(
   CHANGE_INVOICE_NUMBER,
@@ -15,15 +15,15 @@ export const changeInvoiceNumber = createAction(
 export const initializeInputs = createAction(INITIALIZE_INPUTS);
 
 const initialState = {
-  deliverCompany: '',
+  deliveryCompany: '',
   invoiceNumber: '',
 };
 
 const referer = handleActions(
   {
-    [CHANGE_DELIVER_COMPANY]: (state, { payload: deliverCompany }) => ({
+    [CHANGE_DELIVERY_COMPANY]: (state, { payload: deliveryCompany }) => ({
       ...state,
-      deliverCompany,
+      deliveryCompany,
     }),
     [CHANGE_INVOICE_NUMBER]: (state, { payload: invoiceNumber }) => ({
       ...state,
