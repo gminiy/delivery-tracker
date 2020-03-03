@@ -12,7 +12,7 @@ export const changeInvoiceNumber = invoiceNumber => ({
   invoiceNumber,
 });
 
-export const INITIALIZE_INPUTS = () => ({
+export const initializeInputs = () => ({
   type: INITIALIZE_INPUTS,
 });
 
@@ -26,12 +26,12 @@ function referer(state = initialState, action) {
     case CHANGE_DELIVER_COMPANY:
       return {
         ...state,
-        deliverCompany,
+        deliverCompany: action.deliverCompany,
       };
     case CHANGE_INVOICE_NUMBER:
       return {
         ...state,
-        invoiceNumber,
+        invoiceNumber: action.invoiceNumber,
       };
     case INITIALIZE_INPUTS:
       return initialState;
