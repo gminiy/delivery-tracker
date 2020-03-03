@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const DeliveryTrackerTemplateBlock = styled.div`
   width: 100%;
   overflow: hidden;
-  
-  .appTitle {
+
+  .DeliveryTrackerTitle {
     color: 'black';
     height: 4rem;
     font-size: 1.5rem;
@@ -18,7 +18,7 @@ const DeliveryTrackerTemplateBlock = styled.div`
 const DeliveryTrackerTemplate = ({ children }) => {
   return (
     <DeliveryTrackerTemplateBlock>
-      <div className="appTitle">월간 가슴 배송 조회</div>
+      <div className="DeliveryTrackerTitle">월간 가슴 배송 조회</div>
       <div className="content">{children}</div>
     </DeliveryTrackerTemplateBlock>
   );
