@@ -1,16 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import DeliveryTrackerReferer from '../components/DeliveryTrackerReferer';
-import { changeDeliverCompany, changeInvoiceNumber, initializeInputs } from '../modules/referer';
+import {
+  changeDeliverCompany,
+  changeInvoiceNumber,
+  initializeInputs,
+} from '../modules/referer';
 
-const DeliveryTrackerRefererContainer = ({ deliverCompany, invoiceNumber, changeDeliverCompany, changeInvoiceNumber, initializeInputs }) => {
-  return <DeliveryTrackerReferer
-    deliverCompany={deliverCompany}
-    invoiceNumber={invoiceNumber}
-    changeDeliverCompany={changeDeliverCompany}
-    changeInvoiceNumber={changeInvoiceNumber}
-    initializeInputs={initializeInputs}
-  />;
+const DeliveryTrackerRefererContainer = ({
+  deliverCompany,
+  invoiceNumber,
+  changeDeliverCompany,
+  changeInvoiceNumber,
+  initializeInputs,
+}) => {
+  return (
+    <DeliveryTrackerReferer
+      deliverCompany={deliverCompany}
+      invoiceNumber={invoiceNumber}
+      changeDeliverCompany={changeDeliverCompany}
+      changeInvoiceNumber={changeInvoiceNumber}
+      initializeInputs={initializeInputs}
+    />
+  );
 };
 
 const mapStateToProps = state => ({
@@ -19,10 +31,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeDeliverCompany: (deliverCompany) => {
+  changeDeliverCompany: deliverCompany => {
     dispatch(changeDeliverCompany(deliverCompany));
   },
-  changeInvoiceNumber: (invoiceNumber) => {
+  changeInvoiceNumber: invoiceNumber => {
     dispatch(changeInvoiceNumber(invoiceNumber));
   },
   initializeInputs: () => {
