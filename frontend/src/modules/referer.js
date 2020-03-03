@@ -18,7 +18,7 @@ export const initializeInputs = () => ({
 
 const initialState = {
   deliverCompany: '',
-  invoiceNumber: null,
+  invoiceNumber: '',
 };
 
 function referer(state = initialState, action) {
