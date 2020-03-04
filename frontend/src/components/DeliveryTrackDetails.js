@@ -43,10 +43,10 @@ const DeliveryTrackDetails = ({ trackDetails }) => {
         <div className="title phoneNumber">전화 번호</div>
         <div className="title status">배송 상태</div>
       </StyledContainer>
-      {trackDetails.map(({ time, store, status, phoneNumbers }, index) => {
+      {trackDetails.map(({ timeString, store, status, phoneNumbers }, index) => {
         return (
           <StyledContainer key={index}>
-            <div className="time">{time}</div>
+            <div className="time">{timeString}</div>
             <div className="store">{store}</div>
             <div className="phoneNumber">{phoneNumbers.join(', ')}</div>
             <div className="status">{status}</div>

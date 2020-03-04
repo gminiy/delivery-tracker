@@ -3,9 +3,18 @@ import { connect } from 'react-redux';
 import DeliveryTrack from '../components/DeliveryTrack';
 
 const DeliveryTrackContainer = ({ deliveryTrack }) => {
+  const sortDeliveryTrackDetailsByTimeDescending = () => {
+    const sortedDetails = deliveryTrack.details.sort((a, b) => b.time - a.time);
+    return { ...deliveryTrack, details: sortedDetails };
+  };
+
   return (
     <div>
-      {deliveryTrack && <DeliveryTrack deliveryTrack={deliveryTrack} />}
+      {deliveryTrack && (
+        <DeliveryTrack
+          deliveryTrack={sortDeliveryTrackDetailsByTimeDescending()}
+        />
+      )}
     </div>
   );
 };
