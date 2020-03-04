@@ -6,15 +6,24 @@ import DeliveryTrackerButton from './DeliveryTrackerButton';
 
 const DeliveryTrackerButtonWithMargin = styled(DeliveryTrackerButton)`
   margin-left: 3%;
-  margin-top: 2.5%;
+  margin-top: 1%;
 `;
+
+const ErrorMessage = styled.div`
+  color: red;
+  font-size: 0.875rem;
+  font-weight: bold;
+  margin-left: 40%;
+`;
+
 const DeliveryTrackerReferer = ({
   deliveryCompany,
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
   initializeInputs,
-  refer
+  refer,
+  error
 }) => {
   const onChangeDeliveryCompany = e => changeDeliveryCompany(e.target.value);
   const onChangeInvoiceNumber = e => changeInvoiceNumber(e.target.value);
@@ -34,6 +43,7 @@ const DeliveryTrackerReferer = ({
         value={invoiceNumber}
         onChange={onChangeInvoiceNumber}
       />
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <DeliveryTrackerButtonWithMargin onClick={refer}>
         조회하기
       </DeliveryTrackerButtonWithMargin>
