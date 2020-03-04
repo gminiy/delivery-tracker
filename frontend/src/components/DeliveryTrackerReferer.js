@@ -13,32 +13,37 @@ const ErrorMessage = styled.div`
   color: red;
   font-size: 0.875rem;
   font-weight: bold;
-  margin-left: 33%;
+  margin-left: 20rem;
 `;
 
 const DeliveryTrackerReferer = ({
-  deliveryCompany,
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
   initialize,
   refer,
-  error
+  error,
 }) => {
-  const onChangeDeliveryCompany = e => changeDeliveryCompany(e.target.value);
+  const onChangeDeliveryCompany = selected => changeDeliveryCompany(selected.value);
   const onChangeInvoiceNumber = e => changeInvoiceNumber(e.target.value);
-
+  const deliveryCompanyOptions = [
+    { value: '04', label: 'CJ대한통운' },
+    { value: '05', label: '한진택배' },
+    { value: '23', label: '경동택배' },
+  ];
+  
   return (
     <div>
       <DeliveryTrackerHeader title="조회 정보" />
+
       <DeliveryTrackerInputForm
         name="deliveryCompany"
         label="택배 회사"
-        value={deliveryCompany}
+        selection
         onChange={onChangeDeliveryCompany}
+        options={deliveryCompanyOptions}
       />
       <DeliveryTrackerInputForm
-        name="invoiceNumber"
         label="송장 번호"
         value={invoiceNumber}
         onChange={onChangeInvoiceNumber}
