@@ -24,6 +24,11 @@ const DeliveryTrackerRefererContainer = ({
     getDeliveryTrack({ deliveryCompany, invoiceNumber });
   };
 
+  const initialize = () => {
+    initializeInputs();
+    setError(null);
+  };
+
   return (
     <div>
       <DeliveryTrackerReferer
@@ -31,7 +36,7 @@ const DeliveryTrackerRefererContainer = ({
         invoiceNumber={invoiceNumber}
         changeDeliveryCompany={changeDeliveryCompany}
         changeInvoiceNumber={changeInvoiceNumber}
-        initializeInputs={initializeInputs}
+        initialize={initialize}
         refer={refer}
         error={error}
       />

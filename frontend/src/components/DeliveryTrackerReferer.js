@@ -21,7 +21,7 @@ const DeliveryTrackerReferer = ({
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
-  initializeInputs,
+  initialize,
   refer,
   error
 }) => {
@@ -47,7 +47,7 @@ const DeliveryTrackerReferer = ({
       <DeliveryTrackerButtonWithMargin onClick={refer}>
         조회하기
       </DeliveryTrackerButtonWithMargin>
-      <DeliveryTrackerButtonWithMargin onClick={initializeInputs}>
+      <DeliveryTrackerButtonWithMargin onClick={initialize}>
         초기화
       </DeliveryTrackerButtonWithMargin>
     </div>
