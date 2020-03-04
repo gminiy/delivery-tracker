@@ -5,8 +5,8 @@ import DeliveryTrackerInputForm from './DeliveryTrackerInputForm';
 import DeliveryTrackerButton from './DeliveryTrackerButton';
 
 const DeliveryTrackerButtonWithMargin = styled(DeliveryTrackerButton)`
-  margin-left: 3%;
-  margin-top: 1%;
+  margin-left: 14rem;
+  margin-top: 1rem;
 `;
 
 const ErrorMessage = styled.div`
@@ -20,7 +20,6 @@ const DeliveryTrackerReferer = ({
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
-  initialize,
   refer,
   error,
 }) => {
@@ -51,9 +50,6 @@ const DeliveryTrackerReferer = ({
       {error && <ErrorMessage>{error}</ErrorMessage>}
       <DeliveryTrackerButtonWithMargin onClick={refer}>
         조회하기
-      </DeliveryTrackerButtonWithMargin>
-      <DeliveryTrackerButtonWithMargin onClick={initialize}>
-        초기화
       </DeliveryTrackerButtonWithMargin>
     </div>
   );
