@@ -1,10 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const { getDeliveryTrack } = require('./delivery-track-controller');
 
-/* GET home page. */
-router.get('/delivery-track', function(req, res, next) {
-  const { deliveryCompanyCode, invoiceNumber } = req.query;
-  res.json({ deliveryCompanyCode, invoiceNumber });
-});
+router.get('/delivery-track', getDeliveryTrack);
 
 module.exports = router;
