@@ -10,13 +10,13 @@ const CHANGE_INVOICE_NUMBER = 'referer/CHANGE_INVOICE_NUMBER';
 const INITIALIZE_INPUTS = 'referer/INITIALIZE_INPUTS';
 
 export const getDeliveryTrack = ({
-  deliveryCompanyCode,
+  deliveryCompany,
   invoiceNumber,
 }) => async dispatch => {
   dispatch({ type: GET_DELIVERY_TRACK });
   try {
     const response = await referDeliveryTrack({
-      deliveryCompanyCode,
+      deliveryCompany,
       invoiceNumber,
     });
     dispatch({

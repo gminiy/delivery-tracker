@@ -5,6 +5,7 @@ import {
   changeDeliveryCompany,
   changeInvoiceNumber,
   initializeInputs,
+  getDeliveryTrack,
 } from '../modules/referer';
 
 const DeliveryTrackerRefererContainer = ({
@@ -13,10 +14,10 @@ const DeliveryTrackerRefererContainer = ({
   changeDeliveryCompany,
   changeInvoiceNumber,
   initializeInputs,
+  getDeliveryTrack,
 }) => {
   const refer = () => {
-    console.log(deliveryCompany);
-    console.log(invoiceNumber);
+    getDeliveryTrack({ deliveryCompany, invoiceNumber });
   };
 
   return (
@@ -39,6 +40,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getDeliveryTrack: ({
+    deliveryCompany,
+    invoiceNumber,
+  }) => {
+    dispatch(getDeliveryTrack({ deliveryCompany, invoiceNumber }));
+  },
   changeDeliveryCompany: deliveryCompany => {
     dispatch(changeDeliveryCompany(deliveryCompany));
   },
