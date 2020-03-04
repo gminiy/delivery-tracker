@@ -1,9 +1,10 @@
 import React from 'react';
+import DeliveryTrackBase from './DeliveryTrackBase';
 
 const DeliveryTrack = ({ deliveryTrack }) => {
   return (
     <div>
-      {JSON.stringify(deliveryTrack)}
+      <DeliveryTrackBase  trackBase={deliveryTrack.base} />
     </div>
   );
 };
