@@ -3,8 +3,34 @@ const fetch = require('node-fetch');
 const Bluebird = require('bluebird');
 fetch.Promise = Bluebird;
 
+const appendQuerysToUrl = require('../lib/append-querys-to-url');
+
+const createTrackingBaseInfo = trackingInfo => ({
+  senderName: trackingInfo.senderName,
+  receiverName: trackingInfo.receiverName,
+  itemName: trackingInfo.itemName,
+  invoiceNumber: trackingInfo.invoiceNumber,
+  receiverAddress: trackingInfo.receiverAddr,
+  complete: trackingInfo.complete,
+  recipient: trackingInfo.recipient,
+});
+
+const createTrackingDetailInfo = ({ trackingDetails }) => {
+  return trackingDetails.map(trackingDetail => {
+    const info = {
+      time: trackingDetail.time,
+      timeString: trackingDetail.timeString,
+      status: trackingDetail.kind,
+      phoneNumbers: [],
+    };
+    if (trackingDetail.telno !== '') info.phoneNumbers.push(trackingDetail.telno);
+    if (trackingDetail.telno2 !== '') info.phoneNumbers.push(trackingDetail.telno2);
+
+    return info;
+  });
+};
+
 exports.getDeliveryTrack = async (req, res, next) => {
-  const appendQuerysToUrl = require('../lib/append-querys-to-url');
   const GET_TRACKING_INFO_URL =
     'http://info.sweettracker.co.kr/api/v1/trackingInfo';
   const { deliveryCompanyCode, invoiceNumber } = req.query;
@@ -24,15 +50,21 @@ exports.getDeliveryTrack = async (req, res, next) => {
 
     if (!response.ok) return next(createError(response.status));
 
-    const data = await response.json();
+    const trackingInfo = await response.json();
 
-    if (data.status === false) {
-      if (data.code === '104') return res.status(409).json(data);
+    if (trackingInfo.status === false) {
+      if (trackingInfo.code === '104')
+        return res.status(409).json(trackingInfo);
 
-      return next(createError(500, JSON.stringify(data)));
+      return next(createError(500, JSON.stringify(trackingInfo)));
     }
 
-    return res.json(data);
+    const sendingData = {
+      base: createTrackingBaseInfo(trackingInfo),
+      details: createTrackingDetailInfo(trackingInfo),
+    };
+
+    return res.json(sendingData);
   } catch (error) {
     return next(error);
   }
