@@ -5,7 +5,7 @@ import DeliveryTrack from '../components/DeliveryTrack';
 const DeliveryTrackContainer = ({ deliveryTrack }) => {
   return (
     <div>
-      <DeliveryTrack deliveryTrack={deliveryTrack} />
+      {deliveryTrack && <DeliveryTrack deliveryTrack={deliveryTrack} />}
     </div>
   );
 };
