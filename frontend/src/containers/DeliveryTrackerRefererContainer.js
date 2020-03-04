@@ -20,14 +20,16 @@ const DeliveryTrackerRefererContainer = ({
   };
 
   return (
-    <DeliveryTrackerReferer
-      deliveryCompany={deliveryCompany}
-      invoiceNumber={invoiceNumber}
-      changeDeliveryCompany={changeDeliveryCompany}
-      changeInvoiceNumber={changeInvoiceNumber}
-      initializeInputs={initializeInputs}
-      refer={refer}
-    />
+    <div>
+      <DeliveryTrackerReferer
+        deliveryCompany={deliveryCompany}
+        invoiceNumber={invoiceNumber}
+        changeDeliveryCompany={changeDeliveryCompany}
+        changeInvoiceNumber={changeInvoiceNumber}
+        initializeInputs={initializeInputs}
+        refer={refer}
+      />
+    </div>
   );
 };
 

@@ -1,5 +1,7 @@
 import { createAction, handleActions } from 'redux-actions';
-import { referDeliveryTrack } from '../lib/referer';
+import { referDeliveryTrack } from '../lib/api/referer';
+import { dummyDeliveryTrack } from '../lib/dummyDeliveryTrack';
+
 const GET_DELIVERY_TRACK = 'referer/GET_DELIVERY_TRACK';
 const GET_DELIVERY_TRACK_SUCCESS = 'referer/GET_DELIVERY_TRACK_SUCCESS';
 const GET_DELIVERY_TRACK_FAILURE = 'referer/GET_DELIVERY_TRACK_FAILURE';
@@ -43,10 +45,11 @@ export const changeInvoiceNumber = createAction(
 
 export const initializeInputs = createAction(INITIALIZE_INPUTS);
 
+// add dummy data for test
 const initialState = {
   deliveryCompany: '',
   invoiceNumber: '',
-  deliveryTrack: null,
+  deliveryTrack: dummyDeliveryTrack,
   loading: false,
   error: null,
 };
