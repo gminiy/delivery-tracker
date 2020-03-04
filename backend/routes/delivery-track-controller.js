@@ -9,7 +9,7 @@ const createTrackingBaseInfo = trackingInfo => ({
   senderName: trackingInfo.senderName,
   receiverName: trackingInfo.receiverName,
   itemName: trackingInfo.itemName,
-  invoiceNumber: trackingInfo.invoiceNumber,
+  invoiceNumber: trackingInfo.invoiceNo,
   receiverAddress: trackingInfo.receiverAddr,
   complete: trackingInfo.complete,
   recipient: trackingInfo.recipient,
