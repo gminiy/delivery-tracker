@@ -13,7 +13,7 @@ const ErrorMessage = styled.div`
   color: red;
   font-size: 0.875rem;
   font-weight: bold;
-  margin-left: 40%;
+  margin-left: 33%;
 `;
 
 const DeliveryTrackerReferer = ({

@@ -23,10 +23,10 @@ export const getDeliveryTrack = ({
       type: GET_DELIVERY_TRACK_SUCCESS,
       payload: response.data,
     });
-  } catch (e) {
+  } catch (error) {
     dispatch({
       type: GET_DELIVERY_TRACK_FAILURE,
-      payload: e,
+      payload: error,
       error: true,
     });
   }
@@ -49,7 +49,7 @@ const initialState = {
   invoiceNumber: '',
   deliveryTrack: null,
   loading: false,
-  error: null,
+  referError: null,
 };
 
 const referer = handleActions(
@@ -63,9 +63,9 @@ const referer = handleActions(
       deliveryTrack,
       loading: false,
     }),
-    [GET_DELIVERY_TRACK_FAILURE]: (state, { payload: error }) => ({
+    [GET_DELIVERY_TRACK_FAILURE]: (state, { payload: referError }) => ({
       ...state,
-      error,
+      referError,
       loading: false,
     }),
     [CHANGE_DELIVERY_COMPANY]: (state, { payload: deliveryCompany }) => ({
