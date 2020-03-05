@@ -8,8 +8,6 @@ const GET_DELIVERY_TRACKING_FAILURE = 'referer/GET_DELIVERY_TRACKING_FAILURE';
 const CHANGE_DELIVERY_COMPANY = 'referer/CHANGE_DELIVERY_COMPANY';
 const CHANGE_INVOICE_NUMBER = 'referer/CHANGE_INVOICE_NUMBER';
 
-const INITIALIZE_DELIVERY_TRACKING = 'referer/INITIALIZE_DELIVERY_TRACKING';
-
 export const getDeliveryTracking = ({
   deliveryCompany,
   invoiceNumber,
@@ -52,11 +50,6 @@ export const changeDeliveryCompany = createAction(
 export const changeInvoiceNumber = createAction(
   CHANGE_INVOICE_NUMBER,
   invoiceNumber => invoiceNumber,
-);
-
-export const initializeDeliveryTracking = createAction(
-  INITIALIZE_DELIVERY_TRACKING,
-  () => {},
 );
 
 const initialState = {
