@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const Joi = require('joi');
 const fetch = require('node-fetch');
 const Bluebird = require('bluebird');
 fetch.Promise = Bluebird;
@@ -21,6 +22,7 @@ const createTrackingDetailInfo = ({ trackingDetails }) => {
       time: trackingDetail.time,
       timeString: trackingDetail.timeString,
       status: trackingDetail.kind,
+      store: trackingDetail.where,
       phoneNumbers: [],
     };
     if (trackingDetail.telno !== '') info.phoneNumbers.push(trackingDetail.telno);
@@ -29,14 +31,26 @@ const createTrackingDetailInfo = ({ trackingDetails }) => {
     return info;
   });
 };
+const validateQuerys = (querys) => {
+  const schema = Joi.object().keys({
+    invoiceNumber: Joi.string().alphanum().required(),
+    deliveryCompanyCode: Joi.string().required()
+  });
+
+  return Joi.validate(querys, schema);
+}
 
 exports.getDeliveryTrack = async (req, res, next) => {
   const GET_TRACKING_INFO_URL =
     'http://info.sweettracker.co.kr/api/v1/trackingInfo';
-  const { deliveryCompanyCode, invoiceNumber } = req.query;
 
-  if (!deliveryCompanyCode || !invoiceNumber)
-    return next(createError(400, 'miss company code or invoice number'));
+  const validationResult = validateQuerys(req.query);
+  
+  if (validationResult.error) {
+    return next(createError(409, 'check delivery company code, invoice number'));
+  }
+
+  const { deliveryCompanyCode, invoiceNumber } = req.query;
 
   const querys = {
     t_key: process.env.SMART_DELIVERY_TRACK_API_KEY,
