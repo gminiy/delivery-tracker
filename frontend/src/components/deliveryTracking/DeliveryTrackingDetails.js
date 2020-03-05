@@ -32,8 +32,6 @@ const StyledContainer = styled.div`
 `;
 
 const DeliveryTrackingDetails = ({ trackingDetails }) => {
-  // Todo loading 중일때는 안보여주고 loading이 끝낫을때만 보여주게 만들기
-
   return (
     <div style={{ marginTop: '2.5%', marginBottom: '2.5%' }}>
       <Header title="상세 정보" />
