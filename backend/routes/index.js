@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { getDeliveryTrack } = require('./delivery-track-controller');
+const { getDeliveryTracking } = require('./delivery-tracker-controller');
 
-router.get('/delivery-track', getDeliveryTrack);
+router.get('/delivery-tracking', getDeliveryTracking);
 
 module.exports = router;
