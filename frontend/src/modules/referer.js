@@ -20,6 +20,16 @@ export const getDeliveryTracking = ({
       deliveryCompany,
       invoiceNumber,
     });
+    // No contents
+    if (response.status === 204) {
+      dispatch({
+        type: GET_DELIVERY_TRACKING_FAILURE,
+        payload: { response },
+        error: true,
+      });
+
+      return;
+    }
 
     dispatch({
       type: GET_DELIVERY_TRACKING_SUCCESS,
