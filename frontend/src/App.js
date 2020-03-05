@@ -1,13 +1,13 @@
 import React from 'react';
 import DeliveryTrackerTemplate from './components/DeliveryTrackerTemplate';
 import RefererContainer from './containers/RefererContainer';
-import DeliveryTrackContainer from './containers/DeliveryTrackContainer';
+import DeliveryTrackingContainer from './containers/DeliveryTrackingContainer';
 
 const App = () => {
   return (
     <DeliveryTrackerTemplate>
       <RefererContainer />
-      <DeliveryTrackContainer />
+      <DeliveryTrackingContainer />
     </DeliveryTrackerTemplate>
   );
 };

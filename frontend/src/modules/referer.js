@@ -1,33 +1,33 @@
 import { createAction, handleActions } from 'redux-actions';
-import { referDeliveryTrack } from '../lib/api/referer';
+import { referDeliveryTracking } from '../lib/api/referer';
 
-const GET_DELIVERY_TRACK = 'referer/GET_DELIVERY_TRACK';
-const GET_DELIVERY_TRACK_SUCCESS = 'referer/GET_DELIVERY_TRACK_SUCCESS';
-const GET_DELIVERY_TRACK_FAILURE = 'referer/GET_DELIVERY_TRACK_FAILURE';
+const GET_DELIVERY_TRACKING = 'referer/GET_DELIVERY_TRACKING';
+const GET_DELIVERY_TRACKING_SUCCESS = 'referer/GET_DELIVERY_TRACKING_SUCCESS';
+const GET_DELIVERY_TRACKING_FAILURE = 'referer/GET_DELIVERY_TRACKING_FAILURE';
 
 const CHANGE_DELIVERY_COMPANY = 'referer/CHANGE_DELIVERY_COMPANY';
 const CHANGE_INVOICE_NUMBER = 'referer/CHANGE_INVOICE_NUMBER';
 
-const INITIALIZE_DELIVERY_TRACK = 'referer/INITIALIZE_DELIVERY_TRACK';
+const INITIALIZE_DELIVERY_TRACKING = 'referer/INITIALIZE_DELIVERY_TRACKING';
 
-export const getDeliveryTrack = ({
+export const getDeliveryTracking = ({
   deliveryCompany,
   invoiceNumber,
 }) => async dispatch => {
-  dispatch({ type: GET_DELIVERY_TRACK });
+  dispatch({ type: GET_DELIVERY_TRACKING });
   try {
-    const response = await referDeliveryTrack({
+    const response = await referDeliveryTracking({
       deliveryCompany,
       invoiceNumber,
     });
 
     dispatch({
-      type: GET_DELIVERY_TRACK_SUCCESS,
+      type: GET_DELIVERY_TRACKING_SUCCESS,
       payload: response.data,
     });
   } catch (error) {
     dispatch({
-      type: GET_DELIVERY_TRACK_FAILURE,
+      type: GET_DELIVERY_TRACKING_FAILURE,
       payload: error,
       error: true,
     });
@@ -44,31 +44,35 @@ export const changeInvoiceNumber = createAction(
   invoiceNumber => invoiceNumber,
 );
 
-export const initializeDeliveryTrack = createAction(
-  INITIALIZE_DELIVERY_TRACK,
+export const initializeDeliveryTracking = createAction(
+  INITIALIZE_DELIVERY_TRACKING,
   () => {},
 );
 
 const initialState = {
   deliveryCompany: '',
   invoiceNumber: '',
-  deliveryTrack: null,
+  deliveryTracking: null,
   loading: false,
   referError: null,
 };
 
 const referer = handleActions(
   {
-    [GET_DELIVERY_TRACK]: state => ({
+    [GET_DELIVERY_TRACKING]: state => ({
       ...state,
       loading: true,
     }),
-    [GET_DELIVERY_TRACK_SUCCESS]: (state, { payload: deliveryTrack }) => ({
+    [GET_DELIVERY_TRACKING_SUCCESS]: (
+      state,
+      { payload: deliveryTracking },
+    ) => ({
       ...state,
-      deliveryTrack,
+      referError: null,
+      deliveryTracking,
       loading: false,
     }),
-    [GET_DELIVERY_TRACK_FAILURE]: (state, { payload: referError }) => ({
+    [GET_DELIVERY_TRACKING_FAILURE]: (state, { payload: referError }) => ({
       ...state,
       referError,
       loading: false,

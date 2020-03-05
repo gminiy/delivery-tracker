@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Referer from '../components/referer/Referer';
+import deliveryCompanyOptions from '../lib/DeliveryCompanyOptions';
+
 import {
   changeDeliveryCompany,
   changeInvoiceNumber,
-  getDeliveryTrack,
+  getDeliveryTracking,
 } from '../modules/referer';
 
 const RefererContainer = ({
@@ -12,10 +14,11 @@ const RefererContainer = ({
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
-  getDeliveryTrack,
+  getDeliveryTracking,
   referError,
 }) => {
   const [error, setError] = useState(null);
+
   useEffect(() => {
     if (referError) {
       if (referError.response.status === 409) {
@@ -29,12 +32,13 @@ const RefererContainer = ({
 
     return;
   }, [referError]);
+
   const refer = () => {
     setError(null);
     if (!deliveryCompany || !invoiceNumber)
       return setError('택배 회사와 송장 번호를 모두 입력해주세요.');
 
-    getDeliveryTrack({ deliveryCompany, invoiceNumber });
+    getDeliveryTracking({ deliveryCompany, invoiceNumber });
   };
 
   return (
@@ -44,6 +48,7 @@ const RefererContainer = ({
         invoiceNumber={invoiceNumber}
         changeDeliveryCompany={changeDeliveryCompany}
         changeInvoiceNumber={changeInvoiceNumber}
+        deliveryCompanyOptions={deliveryCompanyOptions}
         refer={refer}
         error={error}
       />
@@ -58,8 +63,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getDeliveryTrack: ({ deliveryCompany, invoiceNumber }) => {
-    dispatch(getDeliveryTrack({ deliveryCompany, invoiceNumber }));
+  getDeliveryTracking: ({ deliveryCompany, invoiceNumber }) => {
+    dispatch(getDeliveryTracking({ deliveryCompany, invoiceNumber }));
   },
   changeDeliveryCompany: deliveryCompany => {
     dispatch(changeDeliveryCompany(deliveryCompany));

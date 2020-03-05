@@ -1,6 +1,6 @@
 import client from './client';
 
-export const referDeliveryTrack = ({ deliveryCompany, invoiceNumber }) =>
+export const referDeliveryTracking = ({ deliveryCompany, invoiceNumber }) =>
   client.get(
     `/delivery-track?deliveryCompanyCode=${deliveryCompany}&invoiceNumber=${invoiceNumber}`,
   );
