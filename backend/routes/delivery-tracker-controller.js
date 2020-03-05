@@ -28,7 +28,7 @@ const createSendingTrackingDetails = ({ trackingDetails }) => {
 
     if (trackingDetail.telno !== '')
       info.phoneNumbers.push(trackingDetail.telno);
-      
+
     if (trackingDetail.telno2 !== '')
       info.phoneNumbers.push(trackingDetail.telno2);
 
@@ -82,6 +82,8 @@ exports.getDeliveryTracking = async (req, res, next) => {
 
       return next(createError(500, JSON.stringify(tracking)));
     }
+
+    if (tracking.details === undefined) return res.status(204).send();
 
     const sendingTracking = {
       base: createSendingTrackingBase(tracking),
