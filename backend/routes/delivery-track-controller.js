@@ -47,7 +47,7 @@ exports.getDeliveryTrack = async (req, res, next) => {
   const validationResult = validateQuerys(req.query);
   
   if (validationResult.error) {
-    return next(createError(409, 'check delivery company code, invoice number'));
+    return next(createError(400, 'check delivery company code, invoice number'));
   }
 
   const { deliveryCompanyCode, invoiceNumber } = req.query;
@@ -68,7 +68,7 @@ exports.getDeliveryTrack = async (req, res, next) => {
 
     if (trackingInfo.status === false) {
       if (trackingInfo.code === '104')
-        return res.status(409).json(trackingInfo);
+        return res.status(400).json(trackingInfo);
 
       return next(createError(500, JSON.stringify(trackingInfo)));
     }
