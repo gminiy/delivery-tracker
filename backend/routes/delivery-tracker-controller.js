@@ -82,7 +82,7 @@ exports.getDeliveryTracking = async (req, res, next) => {
 
       return next(createError(500, JSON.stringify(tracking)));
     }
-
+    // 204 no content. 택배사에서 정보가 제공되지 않음.
     if (tracking.details === undefined) return res.status(204).send();
 
     const sendingTracking = {
