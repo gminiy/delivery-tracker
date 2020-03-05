@@ -7,7 +7,8 @@ const GET_DELIVERY_TRACK_FAILURE = 'referer/GET_DELIVERY_TRACK_FAILURE';
 
 const CHANGE_DELIVERY_COMPANY = 'referer/CHANGE_DELIVERY_COMPANY';
 const CHANGE_INVOICE_NUMBER = 'referer/CHANGE_INVOICE_NUMBER';
-const INITIALIZE_INPUTS = 'referer/INITIALIZE_INPUTS';
+
+const INITIALIZE_DELIVERY_TRACK = 'referer/INITIALIZE_DELIVERY_TRACK';
 
 export const getDeliveryTrack = ({
   deliveryCompany,
@@ -43,7 +44,10 @@ export const changeInvoiceNumber = createAction(
   invoiceNumber => invoiceNumber,
 );
 
-export const initializeInputs = createAction(INITIALIZE_INPUTS);
+export const initializeDeliveryTrack = createAction(
+  INITIALIZE_DELIVERY_TRACK,
+  () => {},
+);
 
 const initialState = {
   deliveryCompany: '',
@@ -77,7 +81,6 @@ const referer = handleActions(
       ...state,
       invoiceNumber,
     }),
-    [INITIALIZE_INPUTS]: () => initialState,
   },
   initialState,
 );

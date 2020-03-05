@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import DeliveryTrackerReferer from '../components/DeliveryTrackerReferer';
+import Referer from '../components/referer/Referer';
 import {
   changeDeliveryCompany,
   changeInvoiceNumber,
-  initializeInputs,
   getDeliveryTrack,
 } from '../modules/referer';
 
-const DeliveryTrackerRefererContainer = ({
+const RefererContainer = ({
   deliveryCompany,
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
-  initializeInputs,
   getDeliveryTrack,
   referError,
 }) => {
@@ -32,25 +30,20 @@ const DeliveryTrackerRefererContainer = ({
     return;
   }, [referError]);
   const refer = () => {
+    setError(null);
     if (!deliveryCompany || !invoiceNumber)
       return setError('택배 회사와 송장 번호를 모두 입력해주세요.');
 
     getDeliveryTrack({ deliveryCompany, invoiceNumber });
   };
 
-  const initialize = () => {
-    initializeInputs();
-    setError(null);
-  };
-
   return (
     <div>
-      <DeliveryTrackerReferer
+      <Referer
         deliveryCompany={deliveryCompany}
         invoiceNumber={invoiceNumber}
         changeDeliveryCompany={changeDeliveryCompany}
         changeInvoiceNumber={changeInvoiceNumber}
-        initialize={initialize}
         refer={refer}
         error={error}
       />
@@ -73,13 +66,10 @@ const mapDispatchToProps = dispatch => ({
   },
   changeInvoiceNumber: invoiceNumber => {
     dispatch(changeInvoiceNumber(invoiceNumber));
-  },
-  initializeInputs: () => {
-    dispatch(initializeInputs());
-  },
+  }
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DeliveryTrackerRefererContainer);
+)(RefererContainer);

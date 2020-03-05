@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 import Select from 'react-select';
 
-const DeliveryTrackerInputFormBlock = styled.div`
+const InputFormBlock = styled.div`
   margin-top: 1.5rem;
   margin-left: 3rem;
 
@@ -39,7 +39,7 @@ const DeliveryTrackerInput = ({
   options,
 }) => {
   return (
-    <DeliveryTrackerInputFormBlock>
+    <InputFormBlock>
       <div className="inputLabel">{label}</div>
       {selection ? (
         <div style={{ position: 'absolute', left: '13rem', top: '8rem'}}>
@@ -53,7 +53,7 @@ const DeliveryTrackerInput = ({
       ) : (
         <StyledInput placeholder={label} value={value} onChange={onChange} />
       )}
-    </DeliveryTrackerInputFormBlock>
+    </InputFormBlock>
   );
 };
 

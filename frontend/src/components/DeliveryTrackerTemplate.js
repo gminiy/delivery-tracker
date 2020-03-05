@@ -15,7 +15,7 @@ const DeliveryTrackerTemplateBlock = styled.div`
   }
 `;
 
-const DeliveryTracker = ({ children }) => {
+const DeliveryTrackerTemplate = ({ children }) => {
   return (
     <DeliveryTrackerTemplateBlock>
       <div className="DeliveryTrackerTitle">월간 가슴 배송 조회</div>
@@ -24,4 +24,4 @@ const DeliveryTracker = ({ children }) => {
   );
 };
 
-export default DeliveryTracker;
+export default DeliveryTrackerTemplate;

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import palette from '../lib/styles/palette';
+import palette from '../../lib/styles/palette';
 
-const DeliveryTrackerHeaderBlock = styled.div`
+const HeaderBlock = styled.div`
   width: 100%;
   background: ${palette.gray[3]};
 
@@ -17,12 +17,12 @@ const DeliveryTrackerHeaderBlock = styled.div`
   }
 `;
 
-const DeliveryTrackerHeader = ({ title }) => {
+const Header = ({ title }) => {
   return (
-    <DeliveryTrackerHeaderBlock>
+    <HeaderBlock>
       <div className="DeliveryTrackerHeaderTitle">{title}</div>
-    </DeliveryTrackerHeaderBlock>
+    </HeaderBlock>
   );
 };
 
-export default DeliveryTrackerHeader;
+export default Header;

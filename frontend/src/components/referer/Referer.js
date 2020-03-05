@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import DeliveryTrackerHeader from './DeliveryTrackerHeader';
-import DeliveryTrackerInputForm from './DeliveryTrackerInputForm';
-import DeliveryTrackerButton from './DeliveryTrackerButton';
+import Header from '../common/Header';
+import InputForm from './InputForm';
+import Button from '../common/Button';
 
-const DeliveryTrackerButtonWithMargin = styled(DeliveryTrackerButton)`
+const ButtonWithMargin = styled(Button)`
   margin-left: 14rem;
   margin-top: 1rem;
 `;
@@ -16,7 +16,7 @@ const ErrorMessage = styled.div`
   margin-left: 20rem;
 `;
 
-const DeliveryTrackerReferer = ({
+const Referer = ({
   invoiceNumber,
   changeDeliveryCompany,
   changeInvoiceNumber,
@@ -33,26 +33,25 @@ const DeliveryTrackerReferer = ({
   
   return (
     <div>
-      <DeliveryTrackerHeader title="조회 정보" />
-
-      <DeliveryTrackerInputForm
+      <Header title="조회 정보" />
+      <InputForm
         name="deliveryCompany"
         label="택배 회사"
         selection
         onChange={onChangeDeliveryCompany}
         options={deliveryCompanyOptions}
       />
-      <DeliveryTrackerInputForm
+      <InputForm
         label="송장 번호"
         value={invoiceNumber}
         onChange={onChangeInvoiceNumber}
       />
       {error && <ErrorMessage>{error}</ErrorMessage>}
-      <DeliveryTrackerButtonWithMargin onClick={refer}>
+      <ButtonWithMargin onClick={refer}>
         조회하기
-      </DeliveryTrackerButtonWithMargin>
+      </ButtonWithMargin>
     </div>
   );
 };
 
-export default DeliveryTrackerReferer;
+export default Referer;

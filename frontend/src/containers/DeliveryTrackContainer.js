@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import DeliveryTrack from '../components/DeliveryTrack';
+import DeliveryTrack from '../components/deliveryTrack/DeliveryTrack';
 
 const DeliveryTrackContainer = ({ deliveryTrack }) => {
   const sortDeliveryTrackDetailsByTimeDescending = () => {
