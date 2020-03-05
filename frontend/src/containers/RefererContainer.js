@@ -21,10 +21,12 @@ const RefererContainer = ({
   const [error, setError] = useState(null);
   useEffect(() => {
     if (referError) {
+      // 400 bad request
       if (referError.response.status === 400) {
         setError('잘못된 정보입니다. 송장 번호와 택배 회사를 확인해주세요.');
         return;
       }
+      // 204 no contents
       if (referError.response.status === 204) {
         setError('택배사로부터 배송 현황이 확인되지 않습니다.');
         return;
